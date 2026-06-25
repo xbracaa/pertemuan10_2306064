@@ -1,45 +1,45 @@
 import 'dart:convert';
 
 class ProductModel {
+  // membuat var data
   final String name;
-  final String description;
+  final String description; // kalo kondisi data tidak wajib, tipe data diisi jd string?
   final int price;
 
-  //constructor
+  // membuat constructor
   ProductModel({
     required this.name,
     required this.description,
-    required this.price,
+    required this.price
   });
 
-  //object -> map
-  Map<String, dynamic> toMap() {
+  // convert objek ke mmap 
+  Map<String, dynamic> toMap(){
     return {
       'name': name,
       'description': description,
-      'price': price,
+      'price': price
     };
   }
 
-  // map -> onject
+  // convert map ke object
   factory ProductModel.fromMap(
     Map<String, dynamic> map,
   ) {
     return ProductModel(
       name: map['name'] ?? '',
-      description: map['description'],
-      price: map['price']?.toInt() ?? 0,
+      description: map['description'] ?? '',
+      price: map['price'] ?? 0,
     );
   }
 
-  // object -> string
-  String toJson() => json.encode(toMap());
+  // object ke json string
+  String toJson() => jsonEncode(toMap());
 
-  // string -> object
+  //  json string ke object
   factory ProductModel.fromJson(String source) {
     return ProductModel.fromMap(
-      jsonDecode(source,)
+      jsonDecode(source),
     );
   }
-  
 }

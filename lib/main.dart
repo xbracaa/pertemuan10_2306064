@@ -20,13 +20,14 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
     checkLogin();
   }
 
   Future<void> checkLogin() async {
     final prefs = await SharedPreferences.getInstance();
-    isLogin = prefs.getBool("isLogin") ?? false;
+    isLogin = prefs.getBool('isLogin') ?? false;
     setState(() {
       isLoading = false;
     });
@@ -45,10 +46,8 @@ class _MyAppState extends State<MyApp> {
     }
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:
-        isLogin
-          ? const HomePage()
-          : const LoginPage(),
+      home: isLogin ? const HomePage() : const LoginPage(),
     );
   }
 }
+
